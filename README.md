@@ -19,4 +19,9 @@ L'applicazione consentirà agli utenti di:
 - **Frontend**: HTML, CSS, JavaScript
 - **Strumenti di Gestione del Progetto**: Git, GitHub
 
-
+#Questo progetto è stato ultimato ed ottimizzato in vari ambiti:
+  -per la gestione efficiente della sua parte mobile
+  -per rendere l'applicazione ed il suo frontend repsonsive
+  -ottimizzata la UX generica del sito
+  -aumentato il livello di sicurezza e di privacy per gli utenti
+  -aggiunta di funzionalità aggiuntive rispetto al progetto iniziale

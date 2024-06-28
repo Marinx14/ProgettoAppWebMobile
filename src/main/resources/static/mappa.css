@@ -1,0 +1,97 @@
+/* Stili per la sezione "map" */
+#map {
+    position: fixed; /* Imposta la posizione fissa */
+    left: 0; /* Allinea a sinistra al bordo sinistro della pagina */
+    width: 100%; /* Larghezza del 100% della pagina */
+    height: 100%; /* Altezza del 100% della pagina */
+    z-index: -1; /* Sposta la mappa dietro al contenuto */
+}
+.selezione {
+    padding: 10px; /* Aggiunge spazio intorno al menu a tendina */
+    border-radius: 5px; /* Aggiunge bordi arrotondati */
+    width: 100%; /* Imposta la larghezza al 100% */
+    max-width: 300px; /* Imposta una larghezza massima */
+    font-size: 16px; /* Imposta la dimensione del testo */
+    color: #333; /* Colore del testo */
+    z-index: 10;
+    margin-top: 3%;
+    margin-left: -5%;
+}
+
+/* Stile quando il menu a tendina è in hover */
+#selectItinerario:hover {
+    border-color: #999; /* Cambia il colore del bordo quando in hover */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Aggiunge una leggera ombra durante l'hover */
+}
+
+/* Stile per le opzioni del menu a tendina */
+#selectItinerario option {
+    background-color: #fff; /* Cambia il colore dello sfondo delle opzioni */
+    color: #333; /* Colore del testo delle opzioni */
+}
+#centerMapButton {
+    background-color: #ffffff; /* Colore di sfondo del bottone */
+    border-radius: 50%; /* Rende il bottone circolare */
+    width: 50px; /* Imposta la larghezza del bottone */
+    height: 50px; /* Imposta l'altezza del bottone */
+    font-size: 24px; /* Dimensione dell'icona */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Aggiunge un'ombra al bottone */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Aggiunge una transizione per effetti hover */
+    border: 2px solid #007bff00;
+    color: #000000;
+    display: flex; /* Utilizza il layout flex */
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+#centerMapButton:hover {
+    background-color: #eef6ff; /* Cambia il colore di sfondo al passaggio del mouse */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Aumenta l'ombra al passaggio del mouse */
+}
+
+.btn-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.col-text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.btn-center {
+    background-color: #ffffff; /* Colore di sfondo del bottone */
+    border-radius: 50%; /* Rende il bottone circolare */
+    width: 50px; /* Imposta la larghezza del bottone */
+    height: 50px; /* Imposta l'altezza del bottone */
+    font-size: 24px; /* Dimensione dell'icona */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Aggiunge un'ombra al bottone */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Aggiunge una transizione per effetti hover */
+    border: 2px solid #007bff00;
+    color: #000000;
+    display: flex; /* Utilizza il layout flex */
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+#aggiungiButton {
+    background-color: white; /* Imposta il colore di sfondo del bottone su bianco */
+    color: #007bff; /* Imposta il colore del testo su blu (colore primario di default di Bootstrap) */
+    border: 2px solid #007bff; /* Aggiungi un bordo solido blu al bottone */
+    border-radius: 5px; /* Aggiungi bordi arrotondati al bottone */
+    padding: 10px 20px; /* Aggiusta il padding per una dimensione più confortevole */
+    font-size: 16px; /* Aumenta la dimensione del testo */
+    font-weight: bold; /* Rendi il testo in grassetto */
+    position: absolute; /* Imposta il posizionamento assoluto */
+    left: 10px; /* Posiziona il bottone 10px dalla sinistra della pagina */
+    top: 30%; /* Posiziona il bottone 10px dall'alto della pagina */
+    transition: all 0.3s ease; /* Aggiungi una transizione per un effetto più fluido */
+}
+
+#aggiungiButton:hover {
+    background-color: #007bff; /* Cambia il colore di sfondo quando il mouse è sopra il bottone */
+    color: white; /* Cambia il colore del testo in bianco quando il mouse è sopra il bottone */
+}

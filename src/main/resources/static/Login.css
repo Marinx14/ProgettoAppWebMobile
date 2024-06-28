@@ -1,0 +1,128 @@
+
+.login-container {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+/* Stile per il link della brand nella navbar */
+.navbar-brand {
+    font-weight: bold; /* Grassetto */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Ombra */
+    border-radius: 10px; /* Bordo arrotondato */
+    background-color: #007bff; /* Colore di sfondo */
+    padding: 10px 20px; /* Spazio interno */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transizioni per il cambio di colore di sfondo e ombra */
+}
+
+/* Effetto al passaggio del mouse */
+.navbar-brand:hover {
+    background-color: #0056b3; /* Cambio di colore di sfondo */
+}
+
+/* Stili aggiuntivi per la navbar */
+.navbar {
+    height: 80px;
+    display: flex;
+    justify-content: center; /* Sposta gli elementi a sinistra */
+    align-items: center; /* Centra verticalmente */
+    text-align: center;
+
+}
+.navbar-nav {
+    display: flex;
+    justify-content: flex-end; /* Centra orizzontalmente gli elementi */
+    align-items: center;
+    width: 100%; /* Larghezza della navbar */
+}
+.nav-item {
+    padding: 0 10px; /* Aggiungi spaziatura tra gli elementi */
+    padding-right: 30px; /* Aggiunge spazio a sinistra */
+}
+/* Stili per i bottoni */
+.btn-primary {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.container-fluid{
+    padding-right: 30px;
+}
+
+/* Stili per il box */
+.btn-box {
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+
+
+/* Aggiunta di stili per il link navbar */
+.navbar .navbar-nav .nav-item .nav-link {
+    padding: 10px 15px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+    color: #b4d4f5;
+}
+/* Stili per il testo animato */
+#animatedText {
+    position: fixed;
+    top: 40%;
+    left: 5%; /* Riduci ulteriormente la distanza dal bordo sinistro */
+    font-size: 24px; /* Dimensione del carattere */
+    color: #007bff; /* Colore del testo */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Ombra del testo */
+    transition: transform 0.3s, color 0.3s, text-shadow 0.3s; /* Transizione */
+    padding: 10px; /* Aggiungi padding */
+    background-color: #dde3f7; /* Colore di sfondo nero */
+    border-color: #000000;
+    border: solid;
+}
+
+/* Effetto hover sul testo */
+#animatedText:hover {
+    transform: scale(1.1); /* Ingrandimento */
+    color: #0056b3; /* Cambia colore */
+    text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5); /* Modifica ombra */
+}
+
+.sub-text {
+    font-size: 18px; /* Aumenta la dimensione del sottotesto */
+    margin-top: 10px; /* Spazio tra il testo principale e il sottotesto */
+}
+
+/* Stili per l'immagine */
+.img-fluid {
+    position: absolute;
+    top: 45%;
+    right: 1%; /* Sposta l'immagine ancora più verso destra */
+    transform: translate(-50%, -50%);
+    max-width: 30%; /* Rimpicciolisci l'immagine */
+    border: 2px solid #030000; /* Aggiungi un bordo */
+    border-radius: 10px; /* Aggiungi bordi arrotondati */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Aggiungi un'ombra */
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; /* Aggiungi una transizione */
+}
+
+/* Stili per l'hover sull'immagine */
+.img-fluid:hover {
+    transform: translate(-50%, -50%) scale(1.05); /* Ingrandisci leggermente l'immagine */
+    border-color: #007bff; /* Cambia colore del bordo */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Aumenta l'ombra */
+}

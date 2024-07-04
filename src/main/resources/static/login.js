@@ -5,19 +5,19 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     var email = document.getElementById('email').value.toLowerCase();
     switch (true){
         case email.includes('animatore'):
-            window.location.href = '/templates/UsersType/animatore/animatore.html';
+            window.location.href = '/ProgettoAppWebMobile/src/main/resources/templates/UsersType/animatore/animatore.html';
             break;
         case email.includes('contributorautorizzato'):
-            window.location.href = '/templates/UsersType/contributorAutorizzato/contributorAutorizzato.html';
+            window.location.href = '/ProgettoAppWebMobile/src/main/resources/templates/UsersType/contributorAutorizzato/contributorAutorizzato.html';
             break;
         case email.includes('curatore'):
-            window.location.href = '/templates/UsersType/curatore/curatore.html';
+            window.location.href = '/ProgettoAppWebMobile/src/main/resources/templates/UsersType/curatore/curatore.html';
             break;
         case email.includes('turistaautorizzato'):
-            window.location.href = '/templates/UsersType/turistaAutorizzato/turistaAutorizzato.html';
+            window.location.href = '/ProgettoAppWebMobile/src/main/resources/templates/UsersType/turistaAutorizzato/turistaAutorizzato.html';
             break;
         case email.includes('gestorepiattaforma'):
-            window.location.href = '/templates/UsersType/gestorePiattaforma/gestorePiattaforma.html';
+            window.location.href = '/ProgettoAppWebMobile/src/main/resources/templates/UsersType/gestorePiattaforma/gestorePiattaforma.html';
             break;
         default:
             alert('Effettua il login');

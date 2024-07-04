@@ -1,4 +1,47 @@
+/* Stile per il testo animato */
+#animatedText {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px; /* Margine superiore ridotto per avvicinare il testo alla parte superiore */
+    font-size: 28px; /* Dimensione del font aumentata per maggiore impatto */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font più moderno */
+    color: #007bff; /* Colore del testo */
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4); /* Ombra del testo più pronunciata */
+    transition: transform 0.5s ease-in-out, color 0.5s ease-in-out, text-shadow 0.5s ease-in-out; /* Transizioni più fluide */
+    background-color: transparent; /* Sfondo più chiaro per contrasto */
+    z-index: 1; /* Assicurati che il contenuto sia davanti alla sfondo */
+    position: relative;
+}
 
+/* Effetto hover sul testo per un'interazione più dinamica */
+#animatedText:hover {
+    transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
+    color: #0056b3; /* Cambio di colore per attirare l'attenzione */
+    text-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5); /* Ombra del testo più marcata */
+}
+
+/* Stile per l'immagine di sfondo */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/contents/background.png') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px); /* Sfumatura dell'immagine */
+    z-index: -2; /* Assicurati che l'immagine sia dietro al contenuto */
+}
+
+/* Stile per la parte principale del contenuto */
+.container {
+    position: relative;
+    z-index: 0; /* Assicurati che il contenuto sia davanti alla sfondo */
+    padding: 20px;
+    color: white;
+}
+
+/* Stili per il box del login */
 .login-container {
     width: 400px;
     margin: 0 auto;
@@ -8,6 +51,15 @@
     background-color: white;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
 }
+/* Media query per dispositivi con larghezza fino a 768px */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%; /* Rende il container più stretto per adattarsi a schermi piccoli */
+        margin-top: 50px; /* Riduce lo spazio superiore */
+        padding: 15px; /* Riduce il padding per risparmiare spazio */
+    }
+}
+
 /* Stile per il link della brand nella navbar */
 .navbar-brand {
     font-weight: bold; /* Grassetto */
@@ -27,21 +79,23 @@
 .navbar {
     height: 80px;
     display: flex;
-    justify-content: center; /* Sposta gli elementi a sinistra */
+    justify-content: center; /* Sposta gli elementi al centro */
     align-items: center; /* Centra verticalmente */
     text-align: center;
-
 }
+
 .navbar-nav {
     display: flex;
     justify-content: flex-end; /* Centra orizzontalmente gli elementi */
     align-items: center;
     width: 100%; /* Larghezza della navbar */
 }
+
 .nav-item {
     padding: 0 10px; /* Aggiungi spaziatura tra gli elementi */
     padding-right: 30px; /* Aggiunge spazio a sinistra */
 }
+
 /* Stili per i bottoni */
 .btn-primary {
     border: none;
@@ -56,9 +110,6 @@
 .btn-primary:hover {
     background-color: #0056b3;
 }
-.container-fluid{
-    padding-right: 30px;
-}
 
 /* Stili per il box */
 .btn-box {
@@ -67,7 +118,6 @@
     padding: 5px 10px;
     margin: 0 10px;
 }
-
 
 /* Aggiunta di stili per il link navbar */
 .navbar .navbar-nav .nav-item .nav-link {
@@ -80,40 +130,24 @@
 .navbar .navbar-nav .nav-item .nav-link:hover {
     color: #b4d4f5;
 }
-/* Stili per il testo animato */
-#animatedText {
-    position: fixed;
-    top: 40%;
-    left: 5%; /* Riduci ulteriormente la distanza dal bordo sinistro */
-    font-size: 24px; /* Dimensione del carattere */
-    color: #007bff; /* Colore del testo */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Ombra del testo */
-    transition: transform 0.3s, color 0.3s, text-shadow 0.3s; /* Transizione */
-    padding: 10px; /* Aggiungi padding */
-    background-color: #dde3f7; /* Colore di sfondo nero */
-    border-color: #000000;
-    border: solid;
-}
-
-/* Effetto hover sul testo */
-#animatedText:hover {
-    transform: scale(1.1); /* Ingrandimento */
-    color: #0056b3; /* Cambia colore */
-    text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5); /* Modifica ombra */
-}
 
 .sub-text {
     font-size: 18px; /* Aumenta la dimensione del sottotesto */
     margin-top: 10px; /* Spazio tra il testo principale e il sottotesto */
 }
 
-/* Stili per l'immagine */
-.img-fluid {
+/* Modifica la posizione di #img-fluid come desiderato */
+#img-fluid {
     position: absolute;
-    top: 45%;
-    right: 1%; /* Sposta l'immagine ancora più verso destra */
-    transform: translate(-50%, -50%);
-    max-width: 30%; /* Rimpicciolisci l'immagine */
+    right: 10px; /* Ajusta questo valore come necessario */
+    top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Stili per l'immagine di anteprima (se necessaria) */
+.img-fluid {
+    max-width: 100%;
     border: 2px solid #030000; /* Aggiungi un bordo */
     border-radius: 10px; /* Aggiungi bordi arrotondati */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Aggiungi un'ombra */
@@ -122,7 +156,61 @@
 
 /* Stili per l'hover sull'immagine */
 .img-fluid:hover {
-    transform: translate(-50%, -50%) scale(1.05); /* Ingrandisci leggermente l'immagine */
+    transform: scale(1.05); /* Ingrandisci leggermente l'immagine */
     border-color: #007bff; /* Cambia colore del bordo */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Aumenta l'ombra */
+}
+
+/* Nascondi l'immagine in modalità mobile */
+@media (max-width: 768px) {
+    .img-fluid {
+        display: none;
+    }
+}
+
+/* Stili per il menu circolare */
+.circular-menu {
+    position: absolute;
+    bottom: -475px; /* Distanza dal fondo, regolata per spostare il menu più in basso */
+    right: 23px; /* Mantiene la distanza dalla destra */
+    border-radius: 10px;
+    background-color: #0d6efd; /* Imposta lo sfondo del menu */
+    color: #ffffff; /* Imposta il colore del testo */
+    transition: all 0.5s ease; /* Aggiunge un'animazione fluida al menu */
+    z-index: 1050; /* Assicurati che il menu sia sopra gli altri elementi */
+}
+
+.circular-menu-button {
+    position: fixed; /* Mantiene la posizione fissa */
+    bottom: 20px; /* Mantiene la distanza dal fondo */
+    right: 20px; /* Mantiene la distanza dalla destra */
+    border-radius: 5px; /* Rende il pulsante rettangolare */
+    width: 100px; /* Imposta la larghezza del pulsante */
+    height: 50px; /* Imposta l'altezza del pulsante */
+    background-color: #0d6efd; /* Imposta lo sfondo del pulsante */
+    color: #ffffff; /* Imposta il colore del testo */
+    text-align: center; /* Centra il testo */
+    z-index: 1040; /* Assicurati che il pulsante sia dietro il menu */
+}
+
+.circular-menu .nav-link {
+    transition: color 0.3s, transform 0.3s; /* Aggiunge una transizione fluida */
+}
+
+.circular-menu .nav-link:hover {
+    color: #ff0000; /* Cambia il colore del testo al rosso */
+    transform: scale(1.2); /* Aumenta la grandezza del testo */
+}
+
+.navbar-brand, .btn-primary {
+    font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+    .navbar .d-flex {
+        display: none;
+    }
+    .navbar-brand, .btn-primary {
+        font-size: 0.8rem; /* Riduci la dimensione del font per mobile */
+    }
 }

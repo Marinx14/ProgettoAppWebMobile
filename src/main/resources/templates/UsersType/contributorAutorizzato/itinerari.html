@@ -48,14 +48,36 @@
             <i class="fas fa-running"></i>
         </button>
     </div>
-    <div class= "selezione">
-        <!-- Menu a tendina per selezionare l'itinerario -->
-        <label for="selectItinerario" class="form-label">Seleziona Itinerario:</label>
+    <div class="container">
+        <div class="row">
+            <!-- Colonna per il menu a tendina e la selezione dei punti -->
+            <div class="col-md-4">
+                <div class="selezione">
+                    <!-- Menu a tendina per selezionare l'itinerario -->
+                    <label for="selectItinerario" class="form-label">Seleziona Itinerario:</label>
+                    <select class="form-select" id="selectItinerario">
+                        <option selected disabled>Scegli un itinerario</option>
+                        <option value="all">Visualizza tutti gli itinerari</option>
+                    </select>
 
-        <select class="form-select" id="selectItinerario">
-            <option selected disabled>Scegli un itinerario</option>
-        </select>
+                    <div id="pointSelection" class="hidden mt-4">
+                        <h3>Seleziona Punti</h3>
+
+                        <label for="startPoint">Punto di partenza:</label>
+                        <select id="startPoint" class="form-select mb-2"></select>
+
+                        <label for="endPoint">Punto di arrivo:</label>
+                        <select id="endPoint" class="form-select mb-2"></select>
+
+                        <button id="confirmItineraryButton" class="btn btn-primary d-block mx-auto mt-3">Conferma Itinerario</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

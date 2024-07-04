@@ -55,7 +55,7 @@ public class ItineraryController {
      * @param userId    The ID of the user performing the action.
      * @return A response entity indicating the success of the operation.
      */
-    @PostMapping("/add{userId}")
+    @PostMapping("/addItinerary{userId}")
     public ResponseEntity<?> addItinerary(@RequestBody Itinerary itinerary ,@PathParam("userId") int userId) {
         BaseUser user = users.findById(userId).orElseThrow(UserNotExistException::new);
         if (!(user.getUserType().equals(UserRole.Tourist) || user.getUserType().equals(UserRole.Animator))) {

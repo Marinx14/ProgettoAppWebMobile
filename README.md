@@ -26,3 +26,4 @@ L'applicazione consentirà agli utenti di:
   - **ottimizzata la UX generica del sito**
   - **aumentato il livello di sicurezza e di privacy per gli utenti**
   - **aggiunta di funzionalità aggiuntive rispetto al progetto iniziale**
+  - **bug fixing**

@@ -1,6 +1,6 @@
 # Progetto Ingegneria del Software 2023-2024
 
-Questo repository contiene il progetto per il corso di Ingegneria del Software per l'anno accademico 2023-2024.
+Questo repository contiene il progetto per il corso di Ingegneria del Software per l'anno accademico 2023-2024 modificato.
 
 ## Descrizione
 

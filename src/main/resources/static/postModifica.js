@@ -211,8 +211,6 @@ function showComment(event){
     window.location.href = url;
 }
 
-
-
 // Chiamata alla funzione per recuperare e visualizzare le immagini al caricamento della pagina
 window.addEventListener('DOMContentLoaded', getAllMultimedia);
 
@@ -275,7 +273,6 @@ async function salvaMultimedia(event) {
     return true; // Consente l'invio del modulo
 
 }
-
 
 function generateUniqueNumber() {
     return Math.floor(Math.random() * 10000); // Cambia 10000 con un numero più grande se necessario

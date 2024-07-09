@@ -33,7 +33,7 @@
             </ul>
         </div>
         <div class="d-flex">
-            <button class="btn btn-primary me-2">Login</button>
+            <button id="logoutButton" class="btn btn-primary me-2">Logout</button>
         </div>
     </div>
 </nav>
@@ -63,7 +63,15 @@
 
     </div>
 </div>
-
+<!-- Modale di conferma -->
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <p>Sei sicuro di voler effettuare il logout?</p>
+        <button id="confirmYes" class="btn modal-button">Sì</button>
+        <button id="confirmNo" class="btn modal-button">No</button>
+        <div id="spinner" class="spinner"></div>
+    </div>
+</div>
 <!-- Script JavaScript -->
 <script src="/static/home.js"></script>
 <script src="/static/commentiModifica.js"></script>

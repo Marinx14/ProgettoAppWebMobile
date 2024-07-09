@@ -7,23 +7,25 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/Login.css" rel="stylesheet">
+    <link href="/static/logout.css" rel="stylesheet">
+
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="z-index: 2;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home.html">
+        <a class="navbar-brand" href="gestorePiattaforma.html">
             <span>Piattaforma Comunale</span>
         </a>
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="aggiuntaRuolo.html" id=" aggiuntaRuoloLink">Aggiungi Ruolo</a>
+                    <a class="nav-link" href="aggiuntaRuolo.html" id="aggiuntaRuoloLink">Aggiungi Ruolo</a>
                 </li>
             </ul>
         </div>
         <div class="d-flex">
-            <button class="btn btn-primary me-2">Login</button>
+            <button id="logoutButton" class="btn btn-primary me-2">Logout</button>
         </div>
     </div>
 </nav>
@@ -60,9 +62,18 @@
         </div>
     </div>
 </div>
+<!-- Modale di conferma -->
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <p>Sei sicuro di voler effettuare il logout?</p>
+        <button id="confirmYes" class="btn modal-button">Sì</button>
+        <button id="confirmNo" class="btn modal-button">No</button>
+        <div id="spinner" class="spinner"></div>
+    </div>
+</div>
 
 <!-- Script JavaScript -->
-<script src="/static/home.js"></script>
+<script src="/static/logout.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

@@ -35,6 +35,8 @@
     max-height: calc(100vh - 100px); /* Impedisce al box dei commenti di estendersi oltre il viewport */
     border: 1px solid #ccc; /* Aggiungi bordo */
     background-color: #fff; /* Sfondo bianco */
+    color: black;
+    text-align: center;
 }
 
 #new-comment-form {

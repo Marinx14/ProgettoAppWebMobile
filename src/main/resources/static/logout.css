@@ -1,5 +1,5 @@
 
-.modal {
+.modal-logout {
     display: none;
     position: fixed;
     z-index: 1;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.modal-content {
+.modal-content-logout {
     background-color: #fff;
     padding: 20px;
     border: 1px solid #888;
@@ -23,11 +23,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.modal-content.fadeIn {
+.modal-content-logout.fadeIn {
     animation: fadeIn 0.3s ease-in-out;
 }
 
-.modal-button {
+.modal-logout-button {
     margin: 10px;
     padding: 10px 20px;
     border: none;
@@ -53,11 +53,11 @@
 }
 
 @media (max-width: 600px) {
-    .modal-content {
+    .modal-content-logout {
         width: 90%;
     }
 
-    .modal-button {
+    .modal-logout-button {
         margin: 10px 0;
     }
 }

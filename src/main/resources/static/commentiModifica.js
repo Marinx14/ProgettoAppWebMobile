@@ -20,35 +20,39 @@ function getMultimediaIdFromURL() {
     return null;
 }
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
-
     var multimediaId = getMultimediaIdFromURL();
-    console.log(multimediaId)
+    console.log(multimediaId);
     // Esegui una fetch per ottenere i commenti dal server
     fetch(`http://localhost:8080/comment/multimedia?multimediaId=${multimediaId}`)
         .then(response => response.json())
         .then(data => {
             const board = document.querySelector('.board');
 
-            // Itera su ogni commento ricevuto dalla fetch
-            data.forEach(comments => {
-                // Crea un elemento div per il commento
-                const commentDiv = document.createElement('div');
-                commentDiv.classList.add('comment');
+            if (data.length === 0) {
+                // Se non ci sono commenti, crea un elemento div con un messaggio
+                const noCommentsDiv = document.createElement('div');
+                noCommentsDiv.classList.add('no-comments');
+                noCommentsDiv.textContent = 'Nessun commento ancora presente';
+                board.appendChild(noCommentsDiv);
+            } else {
+                // Itera su ogni commento ricevuto dalla fetch
+                data.forEach(comment => {
+                    // Crea un elemento div per il commento
+                    const commentDiv = document.createElement('div');
+                    commentDiv.classList.add('comment');
 
-                // Crea un elemento p per il contenuto del commento
-                const commentContent = document.createElement('p');
-                commentContent.classList.add('comment-content');
-                commentContent.textContent = comments.comment;
+                    // Crea un elemento p per il contenuto del commento
+                    const commentContent = document.createElement('p');
+                    commentContent.classList.add('comment-content');
+                    commentContent.textContent = comment.comment;
+                    // Aggiungi il contenuto del commento al div del commento
+                    commentDiv.appendChild(commentContent);
 
-                // Aggiungi il contenuto del commento al div del commento
-                commentDiv.appendChild(commentContent);
-
-                // Aggiungi il div del commento alla bacheca
-                board.appendChild(commentDiv);
-            });
+                    // Aggiungi il div del commento alla bacheca
+                    board.appendChild(commentDiv);
+                });
+            }
         })
         .catch(error => {
             console.error('Errore durante il recupero dei commenti:', error);

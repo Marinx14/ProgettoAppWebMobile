@@ -218,6 +218,25 @@ public class MultimediaController {
             return new ResponseEntity<>("Multimedia signaled",HttpStatus.OK);
         }else throw new UserBadTypeException();
     }
+    /**
+     * De-Reports a multimedia content
+     * @param userId the user that is reporting the content
+     * @param multimediaId      the ID of the content that the user wants to signal
+     * @return a ResponseEntity representing the status of the operation
+     * @throws UserBadTypeException if the user's role is not correct
+     * @throws MultimediaNotFoundException if the multimedia content is not found
+     */
+    @RequestMapping(value="/deSignal{userId}{multimediaId}", method = RequestMethod.PUT)
+    public ResponseEntity<?> deSignalContent(@PathParam(("userId")) int userId,@PathParam(("multimediaId")) int multimediaId) {
+        Multimedia multimedia = multimediaRepository.findById(multimediaId).orElseThrow(MultimediaNotFoundException::new);
+        BaseUser user = userRepository.findById(userId).orElseThrow(UserNotExistException::new);
+        if (!(user.getUserType().equals(UserRole.Curator) || user.getUserType().equals(UserRole.PlatformManager)
+                || user.getUserType().equals(UserRole.Animator))){
+            multimedia.setSignaled(false);
+            multimediaRepository.save(multimedia);
+            return new ResponseEntity<>("Multimedia Unsignaled",HttpStatus.OK);
+        }else throw new UserBadTypeException();
+    }
 
     /**
      * Retrieves all multimedia items.

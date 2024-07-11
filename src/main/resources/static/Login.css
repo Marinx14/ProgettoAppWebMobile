@@ -182,13 +182,6 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Aumenta l'ombra */
 }
 
-/* Nascondi l'immagine in modalità mobile */
-@media (max-width: 768px) {
-    .img-fluid {
-        display: none;
-    }
-}
-
 /* Stili per il menu circolare */
 .circular-menu {
     position: absolute;

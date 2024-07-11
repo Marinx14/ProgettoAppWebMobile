@@ -21,21 +21,16 @@ function getMultimediaIdFromURL() {
 }
 
 function aggiungiCommento() {
-    // Ottieni il testo del commento dall'input (supponiamo che ci sia un input con id 'commento')
     const commento = document.getElementById('comment-content').value;
     const user1 = 2;
-
-    // Ottieni l'ID del multimedia dalla funzione getMultimediaIdFromURL
     const multimediaId = getMultimediaIdFromURL();
 
-    // Verifica se il commento non è vuoto e l'ID multimedia è valido
     if (commento.trim() !== '' && multimediaId !== null) {
-        // Crea un oggetto con il corpo della richiesta
         const commentData = {
             multimediaId: multimediaId,
             comment: commento
         };
-        // Effettua una fetch per aggiungere il commento al server
+
         fetch(`http://localhost:8080/comment/multimedia/add?userId=${user1}&multimediaId=${multimediaId}`, {
             method: 'POST',
             headers: {
@@ -44,14 +39,15 @@ function aggiungiCommento() {
             body: JSON.stringify(commentData)
         })
             .then(response => {
-                location.reload()
                 if (!response.ok) {
                     throw new Error('Errore durante l\'aggiunta del commento');
                 }
-                return response.json();
+                return response.text(); // Cambia a text() per gestire risposte non JSON
             })
             .then(data => {
-                // Se il commento è stato aggiunto con successo, aggiungi il commento alla bacheca
+                console.log('Risposta del server:', data); // Log della risposta del server
+
+                // Aggiungi il commento al DOM
                 const board = document.querySelector('.board');
 
                 const commentDiv = document.createElement('div');
@@ -61,25 +57,31 @@ function aggiungiCommento() {
                 commentContent.classList.add('comment-content');
                 commentContent.textContent = commento;
 
+                const commentTimestamp = document.createElement('span');
+                commentTimestamp.classList.add('comment-timestamp');
+                commentTimestamp.textContent = `Postato il ${new Date().toLocaleString()}`;
+
                 commentDiv.appendChild(commentContent);
+                commentDiv.appendChild(commentTimestamp);
                 board.appendChild(commentDiv);
 
-                // Pulisci l'input del commento dopo l'aggiunta
-                document.getElementById('commento').value = '';
+                document.getElementById('comment-content').value = '';
             })
+            .catch(error => {
+                console.error('Errore durante l\'aggiunta del commento:', error);
+            });
     } else {
         console.error('Il commento è vuoto o manca l\'ID multimedia.');
     }
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Aggiungi il gestore di eventi per il click sul pulsante di aggiunta commento
     document.getElementById('submit-comment').addEventListener('click', function(event) {
-        event.preventDefault(); // Previeni il comportamento predefinito del pulsante
+        event.preventDefault();
         aggiungiCommento();
     });
 
-    // Esegui una fetch per ottenere i commenti dal server all'avvio della pagina
     var multimediaId = getMultimediaIdFromURL();
     fetch(`http://localhost:8080/comment/multimedia?multimediaId=${multimediaId}`)
         .then(response => response.json())
@@ -100,7 +102,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     commentContent.classList.add('comment-content');
                     commentContent.textContent = comment.comment;
 
+                    const commentTimestamp = document.createElement('span');
+                    commentTimestamp.classList.add('comment-timestamp');
+                    commentTimestamp.textContent = `Postato il ${new Date(comment.timestamp).toLocaleString()}`;
+
                     commentDiv.appendChild(commentContent);
+                    commentDiv.appendChild(commentTimestamp);
                     board.appendChild(commentDiv);
                 });
             }
@@ -109,4 +116,3 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Errore durante il recupero dei commenti:', error);
         });
 });
-

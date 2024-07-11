@@ -226,7 +226,7 @@ public class MultimediaController {
      * @throws UserBadTypeException if the user's role is not correct
      * @throws MultimediaNotFoundException if the multimedia content is not found
      */
-    @RequestMapping(value="/deSignal{userId}{multimediaId}", method = RequestMethod.PUT)
+    @RequestMapping(value="/deSignal{multimediaId}", method = RequestMethod.PUT)
     public ResponseEntity<?> deSignalContent(@PathParam(("userId")) int userId,@PathParam(("multimediaId")) int multimediaId) {
         Multimedia multimedia = multimediaRepository.findById(multimediaId).orElseThrow(MultimediaNotFoundException::new);
         BaseUser user = userRepository.findById(userId).orElseThrow(UserNotExistException::new);

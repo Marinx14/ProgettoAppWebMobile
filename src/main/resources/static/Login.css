@@ -95,29 +95,6 @@
     padding: 0 10px; /* Aggiungi spaziatura tra gli elementi */
     padding-right: 30px; /* Aggiunge spazio a sinistra */
 }
-
-/* Stili per i bottoni */
-.btn-login {
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-login:hover {
-    background-color: #0056b3;
-}
-
-/* Stili per il box */
-.btn-login-box {
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 0 10px;
-}
 .btn-primary {
     border: none;
     padding: 10px 20px;

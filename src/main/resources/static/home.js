@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const loginButton = document.querySelector('.btn-login');
+    const loginButton = document.getElementById('loginButton');
     const homeLink = document.querySelector('.navbar-brand');
 
     if (loginButton) {

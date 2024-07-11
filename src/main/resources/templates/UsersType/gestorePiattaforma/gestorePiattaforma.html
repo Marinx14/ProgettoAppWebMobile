@@ -11,16 +11,21 @@
 
 </head>
 <body>
-<!-- Navbar -->
+<div id="img-fluid" class="d-flex justify-content-center">
+    <img src="/contents/background.png" alt="Immagine" class="img-fluid mx-auto">
+</div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="z-index: 2;">
     <div class="container-fluid">
         <a class="navbar-brand" href="gestorePiattaforma.html">
             <span>Piattaforma Comunale</span>
         </a>
+        <button class="btn btn-primary d-lg-none circular-menu-button ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="aggiuntaRuolo.html" id="aggiuntaRuoloLink">Aggiungi Ruolo</a>
+                    <a class="nav-link" href="aggiuntaRuolo.html" id="AggiuntaRuoloLink">Aggiunta Ruolo</a>
                 </li>
             </ul>
         </div>
@@ -30,15 +35,11 @@
     </div>
 </nav>
 
-<div id="img-fluid" class="d-flex justify-content-center">
-    <img src="/contents/background.png" alt="Immagine" class="img-fluid mx-auto">
-</div>
-
-<div class="container">
+<div class="container mt-3">
     <div class="collapse circular-menu" id="mobileMenu">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="aggiuntaRuolo.html" id=" aggiuntaRuoloLink">Aggiungi Ruolo</a>
+                <a class="nav-link" href="aggiuntaRuolo.html" id="AggiuntaRuoloLink">Aggiunta Ruolo</a>
             </li>
         </ul>
     </div>
@@ -72,5 +73,11 @@
 <!-- Script JavaScript -->
 <script src="/static/logout.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>

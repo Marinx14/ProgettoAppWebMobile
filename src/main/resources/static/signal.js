@@ -70,7 +70,9 @@ function getAllReportedMultimedia() {
                     // Bottone per rimuovere la segnalazione
                     const removeSignalButton = document.createElement('button');
                     removeSignalButton.textContent = "Rimuovi Segnalazione";
-                    removeSignalButton.className = "remove-signal";
+                    removeSignalButton.className = "column-mt4 remove-signal"; // Aggiungi classe di Bootstrap
+
+
                     removeSignalButton.addEventListener('click', function() {
                         // Chiamata per rimuovere la segnalazione
                         removeSignal(multimedia.id);

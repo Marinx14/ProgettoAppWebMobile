@@ -221,6 +221,7 @@
 .circular-menu.show {
     max-height: 200px; /* Adjust this value based on the content height */
     margin-bottom: 15%;
+    z-index: 9999;
 }
 
 .circular-menu .nav-link {

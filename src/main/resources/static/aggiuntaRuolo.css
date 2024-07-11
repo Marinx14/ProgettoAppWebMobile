@@ -23,6 +23,16 @@
     margin-left: auto; /* Sposta il bottone a destra */
 }
 
+/* Nascondi il testo del bottone in modalità mobile e mostra solo l'icona */
+@media (max-width: 576px) {
+    #editButton .button-text {
+        display: none;
+    }
+    #editButton i {
+        display: inline-block;
+    }
+}
+
 /* Stile del pop-up */
 .popup {
     display: none;
@@ -237,4 +247,62 @@
 /* Effetto hover */
 .close-button2:hover {
     background-color: darkred; /* Cambia il colore del pulsante al passaggio del mouse */
+}
+
+@media (max-width: 576px) {
+    .aggiuntaUtente-btn, .rimozioneUtente-btn {
+        position: static; /* Change positioning to static */
+        margin: 10px auto; /* Center the buttons and add some margin for spacing */
+        display: block; /* Ensure buttons are block-level for full width */
+        width: 90%; /* Adjust width to fit mobile view */
+    }
+
+    .board {
+        width: 100%; /* Usa tutta la larghezza disponibile */
+        padding: 10px; /* Riduci il padding */
+        margin-bottom: 20px; /* Add space below the container for the buttons */
+    }
+
+    .user-list li {
+        font-size: 12px; /* Riduci la dimensione del font per gli elementi della lista */
+    }
+}
+
+@media (max-width: 576px) {
+    .popup {
+        width: 90%; /* Make the pop-up wider on small screens */
+        height: auto; /* Allow the height to adjust based on content */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%);
+        padding: 20px; /* Adjust padding for better spacing */
+    }
+
+    .popup input,
+    .popup select,
+    .popup .submit-btn {
+        padding: 12px; /* Increase padding for easier interaction */
+        font-size: 16px; /* Increase font size for better readability */
+    }
+
+    .close-button,
+    .close-button2 {
+        width: 30px; /* Riduci la larghezza per una dimensione più appropriata */
+        height: 30px; /* Riduci l'altezza per una dimensione più appropriata */
+        font-size: 18px; /* Riduci la dimensione della fonte della X per centrarla meglio */
+        line-height: 30px; /* Centra verticalmente la X */
+        padding: 0; /* Rimuovi il padding per evitare spostamenti indesiderati */
+        display: flex; /* Usa flexbox per centrare il contenuto */
+        align-items: center; /* Centra verticalmente il contenuto */
+        justify-content: center; /* Centra orizzontalmente il contenuto */
+    }
+}
+
+@media (max-width: 576px) {
+    .board {
+        margin: 20px; /* Questo aggiunge un margine superiore e inferiore di 20px */
+        margin-left: 20px; /* Aggiunge un margine di 20px a sinistra */
+        margin-right: 20px; /* Aggiunge un margine di 20px a destra */
+        width: calc(100% - 40px); /* Calcola la larghezza come 100% meno i margini laterali */
+    }
 }

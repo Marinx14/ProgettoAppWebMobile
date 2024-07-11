@@ -165,9 +165,20 @@ function displayUsers(users) {
         if (user.userType === "Contributor") {
             const button = document.createElement('button');
             button.classList.add('editButton', 'btn', 'btn-secondary');
-            button.textContent = 'Modifica ruolo';
+            button.textContent = '';
+
+            // Crea l'elemento <i> per l'icona
+            const icon = document.createElement('i');
+            icon.classList.add('fas', 'fa-edit'); // Usa la classe FontAwesome per l'icona di modifica
+            button.appendChild(icon); // Aggiungi l'icona al bottone
+
+            // Aggiungi il testo come tooltip o attributo title se necessario
+            button.setAttribute('title', 'Modifica ruolo');
             button.addEventListener('click', () => {
                 // Creazione della finestra pop-up
+
+                // Crea l'elemento <i> per l'icona
+                const icon = document.createElement('i');
                 const popupContainer = document.createElement('div');
                 popupContainer.classList.add('popup-container');
 

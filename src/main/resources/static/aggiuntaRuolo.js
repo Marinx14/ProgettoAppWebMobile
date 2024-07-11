@@ -195,6 +195,36 @@ function displayUsers(users) {
                 popupContent.style.left = '50%';
                 popupContent.style.transform = 'translate(-50%, -50%)';
 
+                const closeButton = document.createElement('button');
+                closeButton.innerText = 'x';
+                closeButton.style.position = 'absolute';
+                closeButton.style.top = '2px';
+                closeButton.style.right = '3px';
+                closeButton.style.backgroundColor = 'transparent';
+                closeButton.style.border = 'none';
+                closeButton.style.fontSize = '16px';
+                closeButton.style.color = '#333';
+                closeButton.style.cursor = 'pointer';
+                closeButton.style.outline = 'none';
+                closeButton.style.borderRadius = '50%';  // Make it circular
+                closeButton.style.transition = 'color 0.3s, background-color 0.3s';
+
+
+// Add a hover effect
+                closeButton.addEventListener('mouseover', () => {
+                    closeButton.style.color = '#ff0000';  // Change color on hover
+                });
+                closeButton.addEventListener('mouseout', () => {
+                    closeButton.style.color = '#333';  // Revert color on mouse out
+                });
+
+                closeButton.addEventListener('click', () => {
+                    if (popupContent.parentNode) {
+                        popupContent.parentNode.removeChild(popupContent);  // Correctly remove the popup
+                    }
+                });
+
+                popupContent.appendChild(closeButton);
                 const promptText = document.createElement('p');
                 promptText.textContent = `Cosa vuoi fare con il ruolo di ${user.name}?`;
                 promptText.style.marginBottom = '15px';

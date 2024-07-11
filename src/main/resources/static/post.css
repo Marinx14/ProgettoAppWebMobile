@@ -34,37 +34,26 @@ html, body {
     display: none;
 }
 
+.photo-container {
+    flex: none;
+    position: relative;
+    overflow: hidden; /* Nasconde il testo che esce dai bordi del contenitore */
+    transition: transform 0.3s ease-in-out; /* Animazione per il movimento */
+    margin-bottom: 20px; /* Aggiunge del margine tra le immagini */
+    margin-top: 30px;
+    position: relative;
+}
+
 .photo-container:hover {
     transform: scale(1.05); /* Ingrandisce leggermente l'immagine al passaggio del mouse */
 }
 
-/* Global Styles */
-.photo-container {
-    margin: 20px; /* Increase margin around images */
-}
-
 .photo {
-    max-width: 100%; /* Ensure images are not wider than their container */
-    height: auto; /* Maintain aspect ratio */
-    margin: 10px 0; /* Add vertical margin for spacing */
-}
-
-/* Responsive Styles for Mobile Devices */
-@media (max-width: 768px) {
-    .photo-container {
-        margin: 20px; /* Existing top and bottom margin */
-        margin-left: 40px; /* Increase left margin to create more space */
-    }
-
-    .photo {
-        max-width: 90%; /* Reduce image size for mobile */
-        margin: 15px auto; /* Increase margin and center images */
-
-    }
-
-    .photo-grid, .photo-row {
-        gap: 20px; /* Increase gap between images */
-    }
+    width: 100%;
+    height: auto; /* Consente all'immagine di mantenere le proporzioni originali */
+    object-fit: cover; /* Riempie completamente lo spazio disponibile mantenendo le proporzioni */
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out; /* Animazione per il movimento */
 }
 
 .btn-comment {
@@ -101,4 +90,20 @@ p {
     font-style: italic; /* Stile del carattere */
     color: #333; /* Colore del testo */
     margin-top: 10px; /* Spazio sopra il testo */
+}
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 768px) {
+    .photo-container {
+        margin: 10px; /* Adjust margin for mobile */
+    }
+
+    .photo {
+        max-width: 90%; /* Reduce image size for mobile */
+        margin: 15px auto; /* Increase margin and center images */
+        margin-left: 25px; /* Increase left margin to create more space */
+    }
+
+    .photo-grid, .photo-row {
+        gap: 20px; /* Increase gap between images */
+    }
 }

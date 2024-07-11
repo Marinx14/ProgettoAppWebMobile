@@ -23,6 +23,7 @@ function getMultimediaIdFromURL() {
 function aggiungiCommento() {
     // Ottieni il testo del commento dall'input (supponiamo che ci sia un input con id 'commento')
     const commento = document.getElementById('comment-content').value;
+    const user1 = 2;
 
     // Ottieni l'ID del multimedia dalla funzione getMultimediaIdFromURL
     const multimediaId = getMultimediaIdFromURL();
@@ -34,9 +35,8 @@ function aggiungiCommento() {
             multimediaId: multimediaId,
             comment: commento
         };
-
         // Effettua una fetch per aggiungere il commento al server
-        fetch('http://localhost:8080/comment/multimedia/add{userId}{multimediaId}', {
+        fetch(`http://localhost:8080/comment/multimedia/add?userId=${user1}&multimediaId=${multimediaId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,6 +44,7 @@ function aggiungiCommento() {
             body: JSON.stringify(commentData)
         })
             .then(response => {
+                location.reload()
                 if (!response.ok) {
                     throw new Error('Errore durante l\'aggiunta del commento');
                 }
@@ -66,9 +67,6 @@ function aggiungiCommento() {
                 // Pulisci l'input del commento dopo l'aggiunta
                 document.getElementById('commento').value = '';
             })
-            .catch(error => {
-                console.error('Errore durante l\'aggiunta del commento:', error);
-            });
     } else {
         console.error('Il commento è vuoto o manca l\'ID multimedia.');
     }

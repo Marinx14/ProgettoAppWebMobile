@@ -56,4 +56,3 @@ function onPageLoad() {
 
 // Chiama la funzione onPageLoad quando la pagina è completamente caricata
 document.addEventListener('DOMContentLoaded', onPageLoad);
-

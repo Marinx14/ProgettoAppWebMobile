@@ -158,6 +158,7 @@ function displayUsers(users) {
 
     // Aggiungi gli utenti alla lista
     users.forEach(user => {
+        console.log(user);
         const li = document.createElement('li');
         li.textContent = "E-mail: " + user.email + " Ruolo: " + user.userType;
         var UEmail= user.email;
@@ -255,7 +256,7 @@ function makeAnimator(emailNew){
         .then(response => response.text())
         .then(data => {
             console.log(data);
-            refreshPage(); // Esegui il refresh della pagina dopo l'esecuzione del metodo makeCurator()
+            refreshPage(); // Esegui il refresh della pagina dopo l'esecuzione del metodo makeAnimator()
         })
         .catch(error => console.error('Error: Animatore non creato', error));
 }

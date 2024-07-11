@@ -156,3 +156,69 @@
 }
 .action-button.blocked:hover {
     border: 2px solid #6c757d; /* Aggiungi bordo al passaggio del mouse */}
+
+#photo-container {
+    position: relative; /* Imposta il contenitore dell'immagine come punto di riferimento per il posizionamento assoluto */
+}
+
+@media (max-width: 576px) {
+    #photo-container .report-btn {
+        display: block; /* Assicura che il bottone sia visibile in modalità mobile */
+        top: 5px; /* Distanza dal top del contenitore */
+        left: 55px; /* Distanza dal lato sinistro del contenitore */
+        width: 20px; /* Larghezza del bottone */
+        height: 20px; /* Altezza del bottone */
+    }
+}
+
+@media (max-width: 576px) {
+    .aggiuntaCM-btn {
+        margin-left: 0; /* Sposta il bottone più a sinistra */
+    }
+}
+@media (max-width: 576px) {
+    /* Adjust images */
+    .backgroundpost {
+        width: 100%; /* Make images full width */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Adjust buttons */
+    .aggiuntaCM-btn, #btn-confirm-yes, #btn-confirm-no {
+        padding: 5px 10px; /* Reduce padding */
+        font-size: 12px; /* Smaller text */
+    }
+
+    /* Adjust modal */
+    .modal-content {
+        padding: 10px; /* Less padding */
+        font-size: 14px; /* Smaller text */
+    }
+
+    /* If you have specific classes or IDs for "Segnala" and "Commenti" buttons, adjust them similarly */
+}
+
+@media (max-width: 576px) {
+    img {
+        max-width: 80%; /* Riduci la larghezza massima al 80% */
+        height: auto; /* Mantiene l'aspect ratio */
+        display: block; /* Assicura che l'immagine sia centrata */
+        margin: 0 auto; /* Centra l'immagine orizzontalmente */
+    }
+
+    /* Existing adjustments for .backgroundpost, buttons, and modal content */
+    .backgroundpost {
+        width: 100%;
+        height: auto;
+    }
+
+    .aggiuntaCM-btn, #btn-confirm-yes, #btn-confirm-no {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .modal-content {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

@@ -87,3 +87,36 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.selezione {
+    background-color: #fff; /* White background for the selection box */
+    padding: 30px; /* Add more padding for better spacing */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+.selezione:hover {
+    transform: scale(1.05); /* Slightly increase size and lift on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+}
+.selezione .form-label {
+    font-weight: bold; /* Make the label bold */
+    margin-bottom: 15px; /* Add some space below the label */
+    font-size: 1.1em; /* Increase the font size of the label */
+    color: #333; /* Darker color for the label */
+}
+.selezione .form-select {
+    width: 100%; /* Full width dropdown */
+    padding: 12px; /* Add padding inside the dropdown */
+    border-radius: 8px; /* Rounded corners for the dropdown */
+    border: 1px solid #ced4da; /* Border color */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for border color and shadow */
+}
+.selezione .form-select:focus {
+    border-color: #80bdff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5); /* Add shadow on focus */
+}
+.selezione .form-select option {
+    padding: 10px; /* Add padding inside the options */
+}

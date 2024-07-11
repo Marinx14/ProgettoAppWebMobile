@@ -1,4 +1,6 @@
 const user= 2;
+let reportedMultimedia = []; // Array per memorizzare i multimedia segnalati
+
 document.addEventListener("DOMContentLoaded", function() {
     // Ottieni il modal
     var modal = document.getElementById("signal");
@@ -113,24 +115,6 @@ function showPopup(event) {
 
 
 
-function reportContent(multimediaId){
-    const user1=3;
-    console.log(multimediaId);
-    // Esegui la richiesta fetch
-    fetch(`http://localhost:8080/multimedia/signal?userId=${user1}&multimediaId=${multimediaId}`,{
-        method: 'PUT'
-    }).then(response => {
-            // Controlla lo stato della risposta
-            if (response.ok) {
-                console.log('Multimedia signaled successfully.');
-            } else {
-                console.error('Failed to signal multimedia.');
-            }
-        })
-        .catch(error => {
-            console.error('An error occurred while signaling multimedia:', error);
-        });
-}
 
 function getAllMultimedia() {
     fetch('http://localhost:8080/multimedia/getAll')
@@ -166,13 +150,25 @@ function getAllMultimedia() {
                     segnalaButton.textContent = "Segnala";
                     segnalaButton.className = "action-button"; // Aggiungi classe per lo stile CSS
                     segnalaButton.dataset.id = multimedia.id; // Imposta l'ID come attributo personalizzato
-                    segnalaButton.addEventListener('click', showPopup); // Aggiungi gestore di eventi per mostrare il popup
+                    if (multimedia.signaled) {
+                        segnalaButton.disabled = true; // Disabilita il bottone se già segnalato
+                        segnalaButton.classList.add('blocked'); // Aggiungi classe per il colore grigio quando è disabilitato
+                    } else {
+                        segnalaButton.addEventListener('click', showPopup); // Aggiungi gestore di eventi per mostrare il popup solo se non è stato segnalato
+                    }
 
                     const commentiButton = document.createElement('button');
                     commentiButton.textContent = "Commenti";
                     commentiButton.className = "action-button"; // Aggiungi classe per lo stile CSS
                     commentiButton.dataset.id = multimedia.id; // Imposta l'ID come attributo personalizzato
                     commentiButton.addEventListener('click', showComment); // Aggiungi gestore di eventi per mostrare il popup
+
+                    // Crea un bottone di segnalazione rosso per multimedia segnalati
+                    const reportButton = document.createElement('button');
+                    reportButton.textContent = "!";
+                    reportButton.className = "report-btn"; // Aggiungi classe per lo stile CSS
+                    reportButton.style.display = multimedia.signaled ? 'flex' : 'none'; // Mostra il bottone solo se multimedia è segnalato
+                    reportButton.addEventListener('click', (event) => showDialogMessage(event.target)); // Aggiungi gestore di eventi per mostrare il messaggio
 
                     // Crea un contenitore per i bottoni
                     const buttonContainer = document.createElement('div');
@@ -184,7 +180,9 @@ function getAllMultimedia() {
 
                     // Crea un contenitore per l'immagine e la descrizione
                     const imageWrapper = document.createElement('div');
+                    imageWrapper.style.position = 'relative'; // Imposta posizione relativa per posizionare il bottone reportButton
                     imageWrapper.appendChild(imgElement);
+                    imageWrapper.appendChild(reportButton); // Aggiungi il bottone di segnalazione al contenitore
                     imageWrapper.appendChild(descriptionElement);
                     imageWrapper.appendChild(buttonContainer);
                     imageWrapper.style.marginBottom = "20px"; // Aggiunge spazio inferiore tra le immagini
@@ -198,7 +196,54 @@ function getAllMultimedia() {
             console.error('Si è verificato un errore durante il recupero delle immagini:', error);
         });
 }
+function reportContent(multimediaId) {
+    const user1 = 3;
+    // Esegui la richiesta fetch
+    fetch(`http://localhost:8080/multimedia/signal?userId=${user1}&multimediaId=${multimediaId}`, {
+        method: 'PUT'
+    }).then(response => {
+        // Controlla lo stato della risposta
+        if (response.ok) {
+            console.log('Multimedia signaled successfully.');
+            // Mostra il bottone di segnalazione
+            document.querySelector(`button[data-id='${multimediaId}']`).nextSibling.style.display = 'flex';
+        } else {
+            console.error('Failed to signal multimedia.');
+        }
+    })
+        .catch(error => {
+            console.error('An error occurred while signaling multimedia:', error);
+        });
+}
 
+function showDialogMessage(button) {
+    // Crea o trova il messaggio di dialogo
+    let dialogMessage = button.nextElementSibling;
+    if (!dialogMessage || !dialogMessage.classList.contains('dialog-message')) {
+        dialogMessage = document.createElement('div');
+        dialogMessage.className = 'dialog-message';
+
+        // Ottieni la data corrente
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleDateString('it-IT', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+
+        // Imposta il contenuto del messaggio di dialogo con la data
+        dialogMessage.textContent = `Post segnalato il ${formattedDate}`;
+        button.parentElement.appendChild(dialogMessage);
+    }
+
+    // Mostra il messaggio di dialogo
+    dialogMessage.style.display = 'block';
+
+    // Nascondi il messaggio dopo 3 secondi
+    setTimeout(() => {
+        dialogMessage.style.display = 'none';
+    }, 3000);
+}
 
 function showComment(event){
     const multId = event.target.dataset.id;

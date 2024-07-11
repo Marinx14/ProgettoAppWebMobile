@@ -42,6 +42,7 @@ function aggiungiCommento() {
                 if (!response.ok) {
                     throw new Error('Errore durante l\'aggiunta del commento');
                 }
+                location.reload();
                 return response.text(); // Cambia a text() per gestire risposte non JSON
             })
             .then(data => {

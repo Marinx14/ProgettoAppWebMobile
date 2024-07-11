@@ -1,4 +1,7 @@
-
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif; /* Improved font for better readability */
+}
 /* Stile per il modal specifico */
 #signal {
     display: none;

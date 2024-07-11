@@ -113,9 +113,6 @@ function showPopup(event) {
     document.body.appendChild(popupContainer);
 }
 
-
-
-
 function getAllMultimedia() {
     fetch('http://localhost:8080/multimedia/getAll')
         .then(response => response.json()) // Trasforma la risposta in formato JSON
@@ -132,11 +129,11 @@ function getAllMultimedia() {
             // Itera su ogni oggetto multimediale e crea un elemento immagine per ciascuno
             multimediaList.forEach(multimedia => {
                 if(multimedia.validate){
-                    console.log(multimedia.path);
                     const imgElement = document.createElement('img');
                     imgElement.src = `/upload/${multimedia.path}.jpg`; // Assicurati che il percorso sia corretto
                     imgElement.alt = multimedia.name;
                     imageContainer.appendChild(imgElement);
+
 
                     // Imposta la dimensione desiderata per l'immagine (ad esempio larghezza 600px)
                     imgElement.style.width = '600px';
@@ -144,7 +141,8 @@ function getAllMultimedia() {
                     // Aggiungi la descrizione sotto l'immagine
                     const descriptionElement = document.createElement('p');
                     descriptionElement.textContent = multimedia.description;
-
+                    const nameElement = document.createElement('p');
+                    nameElement.textContent = multimedia.name;
                     // Crea bottoni per "Segnala" e "Commenti"
                     const segnalaButton = document.createElement('button');
                     segnalaButton.textContent = "Segnala";
@@ -183,6 +181,7 @@ function getAllMultimedia() {
                     imageWrapper.style.position = 'relative'; // Imposta posizione relativa per posizionare il bottone reportButton
                     imageWrapper.appendChild(imgElement);
                     imageWrapper.appendChild(reportButton); // Aggiungi il bottone di segnalazione al contenitore
+                    imageWrapper.appendChild(nameElement);
                     imageWrapper.appendChild(descriptionElement);
                     imageWrapper.appendChild(buttonContainer);
                     imageWrapper.style.marginBottom = "20px"; // Aggiunge spazio inferiore tra le immagini
@@ -205,6 +204,7 @@ function reportContent(multimediaId) {
         // Controlla lo stato della risposta
         if (response.ok) {
             console.log('Multimedia signaled successfully.');
+            location.reload();
             // Mostra il bottone di segnalazione
             document.querySelector(`button[data-id='${multimediaId}']`).nextSibling.style.display = 'flex';
         } else {
@@ -318,7 +318,6 @@ async function salvaMultimedia(event) {
     return true; // Consente l'invio del modulo
 
 }
-
 function generateUniqueNumber() {
     return Math.floor(Math.random() * 10000); // Cambia 10000 con un numero più grande se necessario
 }

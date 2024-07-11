@@ -92,20 +92,18 @@ function getAllReportedMultimedia() {
 // Funzione per rimuovere la segnalazione di un multimedia/deSignal{userId}{multimediaId}
 
 function removeSignal(multimediaId) {
-    fetch('http://localhost:8080/multimedia/deSignal?userId=${2}&multimediaId=${multimediaId}', {
+    const user1=3;
+    fetch(`http://localhost:8080/multimedia/deSignal?userId=${user1}&multimediaId=${multimediaId}`, {
     method: 'PUT',
         headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-        userId: 2,
-        multimediaId: multimediaId,
-        signaled: false
-    })
 })
 .then(response => {
     if (response.ok) {
         console.log('Segnalazione rimossa per multimedia con ID ${multimediaId}');
+        location.reload();
+
     } else {
         console.error('Errore durante la rimozione della segnalazione del multimedia:', response.statusText);
     }

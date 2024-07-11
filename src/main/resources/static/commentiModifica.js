@@ -34,8 +34,9 @@ function aggiungiCommento() {
             multimediaId: multimediaId,
             comment: commento
         };
+
         // Effettua una fetch per aggiungere il commento al server
-        fetch('http://localhost:8080/comment//multimedia/add?userId=${2}&multimediaId=${multimediaId}', {
+        fetch('http://localhost:8080/comment/multimedia/add{userId}{multimediaId}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

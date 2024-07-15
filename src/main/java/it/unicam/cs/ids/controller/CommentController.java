@@ -1,9 +1,6 @@
 package it.unicam.cs.ids.controller;
 
-import it.unicam.cs.ids.Exception.CommentNotExistExcpetion;
-import it.unicam.cs.ids.Exception.MultimediaNotFoundException;
-import it.unicam.cs.ids.Exception.UserBadTypeException;
-import it.unicam.cs.ids.Exception.UserNotExistException;
+import it.unicam.cs.ids.Exception.*;
 import it.unicam.cs.ids.controller.Repository.*;
 import it.unicam.cs.ids.model.content.Comment;
 import it.unicam.cs.ids.model.content.Itinerary;
@@ -126,4 +123,12 @@ public class CommentController {
         });
         return ResponseEntity.ok(multimediaComments);
     }
+    @DeleteMapping("/deleteAll{multimediaId}{userId}")
+    public ResponseEntity<?> deleteComments(@PathParam("multimediaId") int multimediaId , @PathParam("userId") int userId){
+        BaseUser user = users.findById(userId).orElseThrow(UserNotExistException::new);
+            comments.deleteAll();
+        return new ResponseEntity<>("Comments deleted", HttpStatus.OK);
+    }
+
 }
+

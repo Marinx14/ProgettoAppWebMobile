@@ -45,6 +45,7 @@ fetch('http://localhost:8080/itineraries/getAll')
             option.value = itinerario.id;
             option.textContent = itinerario.name;
             selectItinerario.appendChild(option);
+            console.log(itinerario);
         });
     })
     .catch(error => console.error('Errore durante il recupero degli itinerari:', error));
@@ -59,7 +60,6 @@ selectItinerario.addEventListener('change', function() {
             map.removeLayer(layer);
         }
     });
-    const userId = 1;
     fetch(`http://localhost:8080/itineraries/get/itinerary?id=${selectedItineraryId}`)
         .then(response => response.json())
         .then(data => {
@@ -137,62 +137,107 @@ document.getElementById('selectItinerario').addEventListener('change', function(
 });
 
 
-let pointsData = []; // Array per memorizzare i punti ottenuti
-
+let startPointSelectList= [];
+let endPointSelectList= [];
 // Fetch per ottenere tutti i punti disponibili
 fetch('http://localhost:8080/points/getAll')
     .then(response => response.json())
     .then(data => {
         // Memorizza i punti ottenuti nell'array pointsData
-        pointsData = data;
 
         // Seleziona gli elementi HTML per i menu a tendina startPoint e endPoint
         const startPointSelect = document.getElementById('startPoint');
         const endPointSelect = document.getElementById('endPoint');
-
+        let i=0;
+        let j=0;
         // Popola i menu a tendina con le opzioni dei punti ottenuti
         data.forEach(point => {
+
             const option = document.createElement('option');
             option.value = point.id;
+            startPointSelectList[i] = point.id;
+            i++;
             option.textContent = point.name;
+            startPointSelectList[i] = point.name;
+            i++;
+            startPointSelectList[i] = point.x;
+            i++;
+            startPointSelectList[i] = point.y;
+            i++;
             startPointSelect.appendChild(option);
-
             const option2 = document.createElement('option');
             option2.value = point.id;
+            endPointSelectList[j] = point.id;
+            j++
             option2.textContent = point.name;
+            endPointSelectList[j] = point.name;
+            j++;
+            endPointSelectList[j] = point.x;
+            j++;
+            endPointSelectList[j] = point.y;
+            j++;
             endPointSelect.appendChild(option2);
         });
     })
     .catch(error => console.error('Errore durante il recupero dei punti:', error));
 
+let startPoint= null;
+let endPoint= null;
+let startPointX= null;
+let endPointX= null;
+let startPointY= null;
+let endPointY= null;
 // Funzione per aggiungere un itinerario
 function addItinerary() {
     // Ottieni gli id dei punti selezionati dall'utente
     const startPointId = document.getElementById('startPoint').value;
     const endPointId = document.getElementById('endPoint').value;
-
-    // Trova i punti corrispondenti negli dati ottenuti
-    const startPoint = pointsData.find(point => point.id == startPointId);
-    const endPoint = pointsData.find(point => point.id == endPointId);
-
-    // Verifica che siano stati selezionati punti validi
-    if (startPoint && endPoint) {
+for(let i =0; i<startPointSelectList.length; i+=2){
+    if(startPointSelectList[i]== startPointId){
+        startPoint= startPointSelectList[i+1];
+        startPointX = startPointSelectList[i+2];
+        startPointY = startPointSelectList[i+3];
+    }
+}
+for(let i =0; i<startPointSelectList.length; i+=2){
+    if(endPointSelectList[i]== endPointId){
+        endPoint= endPointSelectList[i+1];
+        endPointX = endPointSelectList[i+2];
+        endPointY = endPointSelectList[i+3];
+    }
+}
+    if (startPoint!=null && endPoint!=null) {
         // Costruisci l'oggetto da inviare nel body della richiesta POST
+        saveItineraryName();
+        const pointsList = [
+            startPointId,
+             endPointId
+        ];
         const itineraryData = {
-            start: {
-                lat: startPoint.x,
-                lng: startPoint.y,
-                name: startPoint.name  // Opzionale: aggiungi altre informazioni necessarie
+            user:{
+              user: userId,
             },
-            end: {
-                lat: endPoint.x,
-                lng: endPoint.y,
-                name: endPoint.name  // Opzionale: aggiungi altre informazioni necessarie
+            comments:{
+                comments: [],
+            },
+            description:{
+                description: "DESCRIZIONE",
+            },
+            id:{
+                id: Math.round(Math.random() * 100),
+            },
+            name:{
+                name: savedItineraryName,
+            },
+            points:{
+                points:pointsList,
+            },
+            validate:{
+                validate:true,
             }
         };
-
-        // Esegui la richiesta POST per aggiungere l'itinerario
-        fetch(`http://localhost:8080/itineraries/addItinerary?userId=${userId}`, {
+        const user2 =2;
+        fetch(`http://localhost:8080/itineraries/addItinerary?userId=${user2}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -200,9 +245,9 @@ function addItinerary() {
             body: JSON.stringify(itineraryData)
         })
             .then(response => {
+                console.log(response);
                 if (response.ok) {
                     console.log('Itinerario aggiunto con successo');
-                    // Ricarica la pagina per aggiornare gli itinerari
                     location.reload();
                 } else {
                     throw new Error('Errore durante l\'aggiunta dell\'itinerario');
@@ -220,3 +265,15 @@ confirmItineraryButton.addEventListener('click', function() {
     addItinerary(); // Chiama la funzione addItinerary al click del pulsante
     document.getElementById('pointSelection').classList.add('hidden'); // Nasconde il menu a tendina
 });
+let savedItineraryName = '';
+
+function saveItineraryName() {
+    const itineraryName = document.getElementById('itineraryName').value;
+    if (!itineraryName) {
+        alert('Per favore, inserisci il nome dell\'itinerario.');
+        return;
+    }
+    savedItineraryName = itineraryName;
+}
+
+document.getElementById('confirmItineraryButton').addEventListener('click', saveItineraryName);
